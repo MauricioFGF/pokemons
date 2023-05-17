@@ -1,0 +1,59 @@
+<section class="pokedex__section">
+  <img class="pokedex__ellipsis" src="../../../assets/ellipsis.svg" />
+  <div class="pokedex__header">
+    <h2 class="pokedex__title">Pokédex</h2>
+    <div class="pokedex__pagination">
+      <button
+        class="pokedex__button button__prev"
+        [disabled]="!prevPage || loading"
+        (click)="setPage('sub')"
+      >
+        <img
+          src="../../../assets/left-arrow.png"
+          alt="left-arrow"
+          width="16px"
+        />
+      </button>
+      <p class="page">{{ page }}</p>
+      <button
+        class="pokedex__button button__next"
+        [disabled]="!nextPage || loading"
+        (click)="setPage('sum')"
+      >
+        <img
+          src="../../../assets/right-arrow.png"
+          alt="right-arrow"
+          width="16px"
+        />
+      </button>
+    </div>
+  </div>
+  <div class="loading" *ngIf="loading; else pokedex">
+    <div class="lds-dual-ring"></div>
+  </div>
+  <ng-template #pokedex>
+    <div *ngIf="error; else pokedex__container" class="pokedex__notfound">
+      <img
+        src="../../../assets/not-found.png"
+        class="pokedex__notfound__image"
+        alt="Pokemon não econtrado"
+      />
+      Nenhum Resultado Encontrado
+    </div>
+    <ng-template #pokedex__container>
+      <div class="pokedex__container grid">
+        <div *ngFor="let pokemon of pokemons">
+          <a routerLink="/pokemon/{{ pokemon.id }}">
+            <app-pokemon-card
+              [name]="pokemon.name"
+              [code]="'#' + pokemon.id"
+              [imageUrl]="pokemon.sprites.front_default"
+              [height]="pokemon.height + 'm'"
+              [weight]="pokemon.weight + 'kg'"
+            />
+          </a>
+        </div>
+      </div>
+    </ng-template>
+  </ng-template>
+</section>

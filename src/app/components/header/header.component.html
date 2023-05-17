@@ -1,0 +1,63 @@
+<section class="home__section">
+  <div class="home__container grid">
+    <div class="home__logo">
+      <img class="logo" src="../../../assets//logo.png" />
+    </div>
+    <div class="home__data">
+      <h1 class="home__title">
+        Explore o mundo dos
+        <span class="home__title_contrast">Pokémons</span>
+      </h1>
+      <p class="home__description">Descubra todas as espécies de Pokémons</p>
+      <div class="home__search">
+        <span class="home__input__container">
+          <input
+            #search
+            class="home__input"
+            type="text"
+            value="{{ searchValue }}"
+            placeholder="Nome do Pokémon"
+            (keypress)="onKeypressEvent($event)"
+          />
+          <button
+            *ngIf="search.value"
+            (click)="setSearchValue('')"
+            class="clear__button"
+          >
+            x
+          </button>
+        </span>
+        <button class="home__button" (click)="setSearchValue(search.value)">
+          Buscar
+        </button>
+      </div>
+    </div>
+    <div class="home__images grid">
+      <img
+        class="home__image"
+        src="../../../assets/blastoise-home.png"
+        alt="blastoise"
+      />
+      <img
+        class="home__image pd-a"
+        src="../../../assets/squirtle-home.png"
+        alt="squirtle"
+      />
+      <img
+        class="home__image"
+        src="../../../assets/pikachu-home.png"
+        alt="pikachu"
+      />
+      <img
+        class="home__ellipsis__top"
+        src="../../../assets/ellipsis.svg"
+        alt="ellipsis"
+      />
+      <img
+        class="home__ellipsis__bottom"
+        src="../../../assets/ellipsis.svg"
+        alt="ellipsis"
+      />
+    </div>
+  </div>
+</section>

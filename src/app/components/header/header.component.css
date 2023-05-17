@@ -1,0 +1,234 @@
+.home__section {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.home__container {
+  width: 100%;
+  justify-items: center;
+  grid-template-areas:
+    "home__logo"
+    "home__images"
+    "home__data ";
+}
+
+.home__logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  grid-area: home__logo;
+}
+.logo {
+  width: 80px;
+}
+
+.home__data {
+  padding: 0px 1rem;
+  grid-area: home__data;
+}
+.home__title {
+  color: var(--primary-color);
+}
+.home__title_contrast {
+  color: var(--secondary-color);
+}
+.home__description {
+  font-size: var(--normal-font-size);
+  font-weight: var(--normal-weight);
+  color: var(--primary-color);
+  margin: 1rem 0;
+}
+.home__search {
+  display: flex;
+  min-height: 45px;
+}
+.home__input__container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clear__button {
+  position: absolute;
+  right: 10px;
+  color: var(--secondary-color);
+  font-size: 18px;
+  background-color: transparent;
+  line-height: 0;
+}
+.home__input {
+  width: 100%;
+  height: 100%;
+  background-color: var(--contrast-color);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 5px 0px 0px 5px;
+  padding: 10px;
+  color: var(--primary-color);
+  font-weight: var(--h2-weight);
+}
+.home__button {
+  min-width: 106px;
+  box-shadow: 0px 4px 15px #ea686d;
+  border-radius: 0px 5px 5px 0px;
+  font-size: var(--h2-font-size);
+  font-weight: var(--h2-weight);
+}
+.home__button:hover {
+  background-color: var(--secondary-color-hover);
+}
+.home__button:active {
+  background-color: var(--secondary-color-active);
+}
+
+.home__images {
+  column-gap: 0.94rem;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 2.2rem;
+  position: relative;
+  grid-area: home__images;
+  height: 100%;
+}
+.home__image {
+  width: auto;
+  min-width: 70px;
+  height: auto;
+  border-radius: 10px;
+  transition: 0.4s;
+}
+.home__image:hover {
+  transform: scale(1.05);
+}
+.pd-a {
+  position: relative;
+  top: 2.2rem;
+}
+.home__ellipsis__top {
+  position: absolute;
+  z-index: -1;
+  top: -10%;
+  left: -40px;
+  width: 80px;
+}
+.home__ellipsis__bottom {
+  position: absolute;
+  z-index: -1;
+  top: 62%;
+  right: 20%;
+  width: 80px;
+}
+
+@media screen and (max-width: 348px) {
+  .home__data {
+    padding: 0 1.5rem;
+  }
+  .home__button {
+    min-width: 80px;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .home__image {
+    width: 120px;
+  }
+}
+
+@media screen and (min-width: 770px) {
+  .home__container {
+    grid-template-areas:
+      "home__logo home__images"
+      "home__data home__images";
+    column-gap: 5rem;
+    justify-items: center;
+    height: 320px;
+  }
+
+  .home__logo {
+    max-width: 320px;
+    justify-content: start;
+    position: relative;
+    bottom: 40px;
+  }
+  .logo {
+    width: 80px;
+    height: 100px;
+  }
+
+  .home__data {
+    max-width: 320px;
+    position: relative;
+    bottom: 80px;
+    padding: 0;
+  }
+  .home__description {
+    margin-bottom: 1.5rem;
+  }
+  .home__search {
+    min-height: 35px;
+  }
+  .home__button {
+    min-width: 80px;
+    font-size: var(--normal-font-size);
+  }
+  .home__ellipsis__top,
+  .home__ellipsis__bottom {
+    width: 100px;
+  }
+  .home__ellipsis__bottom {
+    top: 55%;
+  }
+}
+
+@media screen and (min-width: 1180px) {
+  .home__container {
+    height: auto;
+  }
+
+  .home__logo {
+    max-width: 490px;
+    bottom: 40px;
+  }
+  .logo {
+    width: 100px;
+    height: 120px;
+  }
+
+  .home__data {
+    max-width: 490px;
+  }
+  .home__title {
+    line-height: 60px;
+  }
+  .home__search {
+    height: 45px;
+    max-width: 440px;
+  }
+  .home__button {
+    min-width: 106px;
+  }
+
+  .home__images {
+    column-gap: 2rem;
+    justify-self: end;
+  }
+  .home__image {
+    width: 160px;
+    height: 360px;
+  }
+  .home__ellipsis__top,
+  .home__ellipsis__bottom {
+    width: 135px;
+  }
+  .home__ellipsis__top {
+    top: -38px;
+    left: -70px;
+  }
+  .home__ellipsis__bottom {
+    top: 75%;
+    right: 20%;
+  }
+  .pd-a {
+    top: 68px;
+  }
+}

@@ -1,0 +1,93 @@
+<button routerLink="/" class="back__home">
+  <img width="14px" src="../../../assets/left-arrow.png" />
+</button>
+<img class="profile__ellipsis__top" src="../../../assets/ellipsis.svg" />
+<div class="loading" *ngIf="loading; else profile__section">
+  <div class="lds-dual-ring"></div>
+</div>
+<ng-template #profile__section>
+  <section class="profile__section grid">
+    <div class="profile__header">
+      <div class="profile__logo">
+        <img
+          src="../../../assets/logo.png"
+          alt=""
+          class="profile__logo__image"
+        />
+      </div>
+      <h2 class="profile__name">{{ details.name || "" }}</h2>
+      <div class="profile__code__type">
+        <p class="profile__code">Cod: #{{ details.id }}</p>
+        <div class="profile__type">
+          Tipo:
+          <div class="profile__type__color">
+            {{ details.types[0].type.name || "" }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="profile__image">
+      <img
+        class="profile__image__pokemon"
+        src="{{ details.sprites.front_default }}"
+      />
+    </div>
+    <div class="profile__description">
+      <p class="profile__description__title">Descrição</p>
+      <p class="profile__description__text">
+        {{ description }}
+      </p>
+      <p class="profile__description__title">Informações</p>
+      <div class="profile__height__container">
+        <p>Altura:</p>
+        <p>{{ details.height }}m</p>
+      </div>
+      <div class="profile__weight__container">
+        <p>Peso:</p>
+        <p>{{ details.weight }}kg</p>
+      </div>
+      <div class="profile__stats">
+        <img
+          class="profile__ellipsis__bottom"
+          src="../../../assets/ellipsis.svg"
+        />
+        <div class="profile__skill">
+          <p class="profile__skill__name">Vida</p>
+          <div class="profile__bar">
+            <div
+              class="profile__bar__life"
+              [style.width]="details.stats[0].base_stat + '%'"
+            ></div>
+          </div>
+        </div>
+        <div class="profile__skill">
+          <p class="profile__skill__name">Defesa</p>
+          <div class="profile__bar">
+            <div
+              class="profile__bar__defense"
+              [style.width]="details.stats[2].base_stat + '%'"
+            ></div>
+          </div>
+        </div>
+        <div class="profile__skill">
+          <p class="profile__skill__name">Velocidade</p>
+          <div class="profile__bar">
+            <div
+              class="profile__bar__speed"
+              [style.width]="details.stats[5].base_stat + '%'"
+            ></div>
+          </div>
+        </div>
+        <div class="profile__skill">
+          <p class="profile__skill__name">Ataque</p>
+          <div class="profile__bar">
+            <div
+              class="profile__bar__attack"
+              [style.width]="details.stats[1].base_stat + '%'"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>
