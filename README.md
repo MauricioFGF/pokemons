@@ -1,5 +1,7 @@
 # Pokemons
  Pokemons Web Site
+ ![image](https://github.com/MauricioFGF/pokemons/assets/52111341/2a772528-649f-4224-8bee-5d59340b08ff)
+
  
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.1.
 
