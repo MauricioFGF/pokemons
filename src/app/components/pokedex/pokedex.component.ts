@@ -1,5 +1,6 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { PokedexService } from 'src/app/services/pokedex.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokedex',
@@ -14,7 +15,7 @@ export class PokedexComponent {
   prevPage: string | null = null;
   page: number = 1;
 
-  constructor(private pokedex: PokedexService) {
+  constructor(private pokedex: PokedexService, private router: Router) {
     //Get pokemons when init page
     this.getPokemons(this.page);
   }
@@ -27,6 +28,11 @@ export class PokedexComponent {
     else this.page = this.page - 1;
     this.getPokemons(this.page);
     return false;
+  }
+
+  // Navigate to pokemon-profile compoment
+  pokemonNavigation(id: string) {
+    this.router.navigate([`/pokemon`, id]);
   }
 
   // Get pokemons by pagination

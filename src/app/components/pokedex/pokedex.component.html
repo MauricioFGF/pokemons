@@ -43,15 +43,14 @@
     <ng-template #pokedex__container>
       <div class="pokedex__container grid">
         <div *ngFor="let pokemon of pokemons">
-          <a routerLink="/pokemon/{{ pokemon.id }}">
-            <app-pokemon-card
-              [name]="pokemon.name"
-              [code]="'#' + pokemon.id"
-              [imageUrl]="pokemon.sprites.front_default"
-              [height]="pokemon.height + 'm'"
-              [weight]="pokemon.weight + 'kg'"
-            />
-          </a>
+          <app-pokemon-card
+            [name]="pokemon.name"
+            [code]="'#' + pokemon.id"
+            [imageUrl]="pokemon.sprites.front_default"
+            [height]="pokemon.height + 'm'"
+            [weight]="pokemon.weight + 'kg'"
+            (click)="pokemonNavigation(pokemon.id)"
+          />
         </div>
       </div>
     </ng-template>
