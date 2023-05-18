@@ -19,6 +19,7 @@ export class PokemonProfileComponent {
     this.getPokemonById(id);
   }
 
+  //Get pokemon infos by id
   async getPokemonById(id: any): Promise<void> {
     this.loading = true;
     try {
@@ -28,6 +29,7 @@ export class PokemonProfileComponent {
         this.error = true;
       } else {
         this.details = response;
+        //Get pokemon description
         this.getDescription(this.details.species.url);
       }
     } catch (err) {
@@ -37,12 +39,14 @@ export class PokemonProfileComponent {
     }
   }
 
-  async getDescription(url: string) {
+  //Get pokemon description
+  getDescription(url: string) {
     try {
-      await fetch(url)
+      fetch(url)
         .then((response) => response.json())
         .then((data) => {
           let textConcat = 'Sem Descrição';
+          // Search a text in English
           data.flavor_text_entries.some((text: any) => {
             if (text.language.name === 'en') {
               textConcat = text.flavor_text;
@@ -50,7 +54,6 @@ export class PokemonProfileComponent {
             }
             return false;
           });
-          console.log(textConcat);
           this.description = textConcat;
         });
     } catch (err) {

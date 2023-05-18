@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  title: string = 'pokemons';
   searchValue: string = '';
 
+  // Set the value used to look up the pokemon in the pokedex
   setSearchValue(value: string) {
     this.searchValue = value;
   }

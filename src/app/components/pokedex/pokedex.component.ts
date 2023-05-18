@@ -15,11 +15,13 @@ export class PokedexComponent {
   page: number = 1;
 
   constructor(private pokedex: PokedexService) {
+    //Get pokemons when init page
     this.getPokemons(this.page);
   }
 
   @Input() searchValue: string = '';
 
+  // Change pagination value
   setPage(value: string) {
     if (value === 'sum') this.page = this.page + 1;
     else this.page = this.page - 1;
@@ -27,6 +29,7 @@ export class PokedexComponent {
     return false;
   }
 
+  // Get pokemons by pagination
   async getPokemons(page: number): Promise<void> {
     try {
       this.loading = true;
@@ -41,6 +44,7 @@ export class PokedexComponent {
     }
   }
 
+  //Get pokemons by name
   async getPokemonByName(name: string): Promise<void> {
     this.loading = true;
     try {
@@ -61,12 +65,15 @@ export class PokedexComponent {
     }
   }
 
+  // Watch the search value changes
   ngOnChanges(changes: SimpleChanges) {
     this.error = false;
     const search = changes['searchValue'];
     if (search.currentValue && search.currentValue !== search.previousValue) {
+      // Get pokémon by name if the value exists and is different from the previous value
       this.getPokemonByName(search.currentValue);
     } else {
+      // Else if get pokemons by first page
       this.getPokemons(1);
     }
   }

@@ -10,6 +10,7 @@ export class PokedexService {
   private apiUrl = 'https://pokeapi.co/api/v2';
   constructor(private http: HttpClient) {}
 
+  // Get pokemons by pagination
   async getPokemons(page: number) {
     const limit = 10;
     const offset = 10 * (page - 1);
@@ -20,6 +21,7 @@ export class PokedexService {
         response = data;
       });
 
+    //Get more pokemons infos
     const newResults: any[] = [];
     response.results.forEach((item: any) => {
       fetch(item.url)
@@ -32,6 +34,7 @@ export class PokedexService {
     return response;
   }
 
+  // Get pokemon by name or Id
   async getPokemonByNameOrId(name: string) {
     try {
       const lowerName = name.toLocaleLowerCase();
